@@ -20,4 +20,4 @@ for i in range(n):
 		list[i] = list[min_index]
 		list[min_index] = temp
 
-print(list)
+		print(list)
