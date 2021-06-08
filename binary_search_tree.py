@@ -43,7 +43,6 @@ class BinarySearchTree:
 
 
 	def print(self):
-		# self._inorder_traversal(self.head)
 		if self.head is None:
 			print("Not Possible")
 
@@ -51,16 +50,6 @@ class BinarySearchTree:
 			self._inorder_traversal(self.head)
 
 		print()
-		# else:
-		#	if self.head.left is None and self.head.right is None:
-		#		print(self.head.data)
-		#	elif self.head.right is None:
-		#		print(self.head.left.data, self.head.data)
-		#	elif self.head.left is None:
-		#		print(self.head.data, self.head.right.data)
-		#	else:
-		#		print(self.head.left.data, self.head.data, self.head.right.data)
-
 
 
 if __name__ == "__main__":
