@@ -135,7 +135,6 @@ if __name__ == "__main__":
 	bst.search_two(79)
 	bst.search_two(43)
 	bst.search_two(100)
-	bst.search_two(100000)
 	bst.delete(43)
 	bst.delete(20)
 	bst.delete(11)
