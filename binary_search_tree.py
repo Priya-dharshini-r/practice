@@ -72,20 +72,32 @@ class BinarySearchTree:
 			print("Deletion, is not possible!")
 		else:
 			itr = self.head
+			itr_parent = None
 			while itr:
 				if delete_data == itr.data:
 
 					if itr.left is None and itr.right is None:
-						print("This case is for leaf node")
+						if delete_data < itr_parent.data:
+							itr_parent.left = None
+						else:
+							itr_parent.right = None
 					elif itr.left is not None and itr.right is not None:
 						print("This case is for leaf with two child")
-					else:
-						print("This case is for leaf with one child")
+
+					elif itr.left is None and itr.right: # It has right child in it
+						print("This case is for leaf with one child and left is empty")
+						itr_parent.left = itr.right
+
+					elif itr.left and itr.right is None:
+						print("This case is for leaf with one child and right is empty")
+						itr_parent.left = itr.left 
 					break
 
 				elif delete_data < itr.data:
+					itr_parent = itr
 					itr = itr.left
 				elif delete_data > itr.data:
+					itr_parent = itr
 					itr = itr.right
 			else:
 				print("Element is not in tree!")
@@ -127,14 +139,25 @@ if __name__ == "__main__":
 	bst.insert(1)
 	bst.insert(20)
 	bst.print()
-	bst.search_two(1)
-	bst.search_two(10)
-	bst.search_two(20)
-	bst.search_two(11)
-	bst.search_two(90)
-	bst.search_two(79)
-	bst.search_two(43)
-	bst.search_two(100)
-	bst.delete(43)
+	# bst.search_two(1)
+	# bst.search_two(10)
+	# bst.search_two(20)
+	# bst.search_two(11)
+	# bst.search_two(90)
+	# bst.search_two(79)
+	# bst.search_two(43)
+	# bst.search_two(100)
+	# bst.delete(43)
+	# bst.delete(20)
+	# bst.delete(90)
+	# bst.print()
+	# bst.delete(1)
+	# bst.print()
+	bst.insert(3)
+	bst.print()
 	bst.delete(20)
+	bst.print()
 	bst.delete(11)
+	bst.print()
+	bst.delete(3)
+	bst.print()
