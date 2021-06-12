@@ -28,7 +28,7 @@ class BinarySearchTree:
 				elif data < itr.data and itr.left is not None:
 					itr = itr.left
 
-				elif data > itr.data and itr.left is not None:
+				elif data > itr.data and itr.right is not None:
 					itr = itr.right
 
 	def search(self, search_data):
@@ -82,15 +82,27 @@ class BinarySearchTree:
 						else:
 							itr_parent.right = None
 					elif itr.left is not None and itr.right is not None:
-						print("This case is for leaf with two child")
+						print("This case is for node with two child")
+						right_subtree_minimum = self._return_minimum(itr.right)
+						self.delete(right_subtree_minimum.data)
+						itr.data = right_subtree_minimum.data
 
-					elif itr.left is None and itr.right: # It has right child in it
-						print("This case is for leaf with one child and left is empty")
-						itr_parent.left = itr.right
+					# Case with only left child or only right child
 
-					elif itr.left and itr.right is None:
-						print("This case is for leaf with one child and right is empty")
-						itr_parent.left = itr.left 
+					elif itr.left is None and itr.right is not None: # It has right child in it
+						print("This case is for node with one child and left is empty")
+						if delete_data > itr_parent.data:
+							itr_parent.right = itr.right
+						else:
+							itr_parent.left = itr.right
+
+					elif itr.left is not None and itr.right is None:
+						print("This case is for with one left child and right is empty")
+						if delete_data < itr_parent.data:
+							itr_parent.left = itr.left
+						else:
+							itr_parent.right = itr.left
+
 					break
 
 				elif delete_data < itr.data:
@@ -102,6 +114,15 @@ class BinarySearchTree:
 			else:
 				print("Element is not in tree!")
 
+
+
+	def _return_minimum(self, node):
+		itr = node
+		while itr:
+			if itr.left is None:
+				return itr
+			else:
+				itr = itr.left
 
 
 	def _inorder_traversal(self, node):
@@ -128,36 +149,23 @@ class BinarySearchTree:
 if __name__ == "__main__":
 	bst = BinarySearchTree()
 	bst.insert(43)
-	bst.print()
 	bst.insert(10)
-	bst.print()
 	bst.insert(79)
-	bst.print()
 	bst.insert(90)
-	bst.print()
+	bst.insert(12)
+	bst.insert(54)
 	bst.insert(11)
-	bst.insert(1)
-	bst.insert(20)
+	bst.insert(9)
+	bst.insert(50)
 	bst.print()
-	# bst.search_two(1)
-	# bst.search_two(10)
-	# bst.search_two(20)
-	# bst.search_two(11)
-	# bst.search_two(90)
-	# bst.search_two(79)
-	# bst.search_two(43)
-	# bst.search_two(100)
-	# bst.delete(43)
-	# bst.delete(20)
+	bst.delete(43)
+	bst.print()
 	# bst.delete(90)
 	# bst.print()
-	# bst.delete(1)
+	# bst.delete(12)
 	# bst.print()
-	bst.insert(3)
-	bst.print()
-	bst.delete(20)
-	bst.print()
-	bst.delete(11)
-	bst.print()
-	bst.delete(3)
-	bst.print()
+	# bst.delete(54)
+	# bst.print()
+	# bst.delete(79)
+	# bst.print()
+
