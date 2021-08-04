@@ -6,7 +6,9 @@ def partition(array, start, end):
 		if array[i] <= pivot:
 			array[i], array[pIndex] = array[pIndex], array[i]
 			pIndex += 1
+			print(array)
 	array[pIndex], array[end] = array[end], array[pIndex]
+	print(array)
 	return pIndex
 
 def quick_sort(array, start, end):
@@ -15,9 +17,11 @@ def quick_sort(array, start, end):
 
 	if start<end:
 		pi = partition(array, start, end)
+		print(array)
 		quick_sort(array, start, pi-1)
+		print(array)
 		quick_sort(array, pi+1, end)
-
+		print(array)
 
 if __name__ == "__main__":
 	array = [10, 7, 8, 9, 1, 5]

@@ -1,0 +1,4 @@
+# Find what is the position of me in a line.
+# ?. How to I give n without even knowing what number is me.
+
+def getposition()

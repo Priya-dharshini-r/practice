@@ -12,23 +12,11 @@ print(a_list)
 i = 0
 while i<n:
 	j = 0
-	print("*****************")
-	print(a
-	while j<i:
+	while j<n-i-1:
 		if a_list[j] > a_list[j+1]:
-			temp = a_list[j]
-			a_list[j] = a_list[j+1]
-			a_list[j+1] = temp
+			a_list[j], a_list[j+1] = a_list[j+1], a_list[j]
+
 		j = j+1
 	i = i+1
-	print("@@@@@@@@@@@@@@@@@@@@@@")
-	print(a_list)
+
 print(a_list)
-
-# 5 4 3 2 1
-# 4 5 3 2 1
-# 4 3 5 2 1
-# 4 3 2 5 1
-# 4 3 2 1 5
-
-

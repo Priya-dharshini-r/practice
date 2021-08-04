@@ -8,6 +8,7 @@ class LinkedList:
 		self.head = None
 
 	def insert_at_head(self, data):
+		# Getting data for head node
 		node = Node(data, self.head)
 		self.head = node
 
@@ -67,6 +68,40 @@ class LinkedList:
 			itr = itr.next
 
 
+	def reverse(self, head):
+		'''
+		if not head:
+            	return head
+        	previous = None
+        	itr = head
+        	while itr:
+            	next = itr.next
+            	itr.next = previous
+            	previous = itr
+            	itr = next
+        	return previous
+		'''
+		# Just written for getting the last element from the LinkedList.
+		# How Do I reverse the full LinkedList. Grab last element make it head.
+		# When to stop grabbing the last element. If I do it recursively there will be no end.
+		prev = None
+		itr = self.head
+		while itr:
+			next = itr.next
+			itr.next = prev
+			prev = itr
+			itr = next
+			itr = itr.next
+		self.head = prev
+		return head
+	def length(self):
+		count = 0
+		itr = self.head
+		while itr:
+			itr = itr.next
+			count += 1
+		return count
+
 	def print(self):
 		if self.head is None:
 			print("LinkedList is Empty!")
@@ -88,9 +123,15 @@ if __name__ == "__main__":
 	# op2 = linkedlist.print()
 	# print(op2)
 	linkedlist.insert_at_end(7)
+	linkedlist.insert_at_end(88)
 	# linkedlist.search("c")
 	# linkedlist.delete(100)
 	# linkedlist.delete(50)
+	linkedlist.insert_at_head(11)
 	linkedlist.insert_at_middle(100, 150)
 	op = linkedlist.print()
-	print(op)
+	length = linkedlist.length()
+	print("LinkedList:",op)
+	print("Length:",length)
+	linkedlist.reverse(100)
+	linkedlist.reverse(100)

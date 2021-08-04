@@ -21,3 +21,4 @@ while len(stack)>0:
 	else:
 		result = stack.pop()
 		print(result)
+'''
