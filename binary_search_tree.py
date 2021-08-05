@@ -6,14 +6,14 @@ class Node:
 
 class BinarySearchTree:
 	def __init__(self):
-		self.head = None
+		self.root = None
 
 	def insert(self, data):
-		if self.head is None:
+		if self.root is None:
 			node = Node(data, None, None)
-			self.head = node
+			self.root = node
 		else:
-			itr = self.head
+			itr = self.root
 			while itr:
 				if data < itr.data and itr.left is None:
 					left_node = Node(data, None, None)
@@ -32,10 +32,10 @@ class BinarySearchTree:
 					itr = itr.right
 
 	def search(self, search_data):
-		if search_data == self.head.data:
+		if search_data == self.root.data:
 			print("Element found at root node")
 		else:
-			itr = self.head
+			itr = self.root
 			while itr:
 				if search_data < itr.data:
 					itr = itr.left
@@ -52,10 +52,10 @@ class BinarySearchTree:
 
 
 	def search_two(self, search_data):
-		if self.head is None:
+		if self.root is None:
 			print("Tree is Empty")
 		else:
-			itr = self.head
+			itr = self.root
 			while itr:
 				if search_data == itr.data:
 					print("Element found")
@@ -68,10 +68,10 @@ class BinarySearchTree:
 				print("Not found")
 
 	def delete(self, delete_data):
-		if self.head is None:
+		if self.root is None:
 			print("Deletion, is not possible!")
 		else:
-			itr = self.head
+			itr = self.root
 			itr_parent = None
 			while itr:
 				if delete_data == itr.data:
@@ -134,16 +134,32 @@ class BinarySearchTree:
 		if node.right is not None:
 			self._inorder_traversal(node.right)
 
+	def _preorder_traversal(self, root):
+		if root:
+			print(root.data,"-->", end = " ")
+			self._preorder_traversal(root.left)
+			self._preorder_traversal(root.right)
+
 
 
 	def print(self):
-		if self.head is None:
+		if self.root is None:
 			print("Not Possible")
 
 		else:
-			self._inorder_traversal(self.head)
+			self._inorder_traversal(self.root)
 
 		print()
+
+	def print_preorder(self):
+		if self.root is None:
+			print("Tree is empty")
+
+		else:
+			self._preorder_traversal(self.root)
+
+		print()
+
 
 
 if __name__ == "__main__":
@@ -160,6 +176,19 @@ if __name__ == "__main__":
 	bst.print()
 	bst.delete(43)
 	bst.print()
+	bst.print_preorder()
+	bst1 = BinarySearchTree()
+	bst1.insert(3)
+	bst1.insert(9)
+	bst1.insert(20)
+	bst1.insert(15)
+	bst1.insert(7)
+	# bst1.insert(2)
+	# bst1.insert(13)
+	# bst1.insert(4)
+	# bst1.insert(1)
+	bst1.print()
+	bst1.print_preorder()
 	# bst.delete(90)
 	# bst.print()
 	# bst.delete(12)
@@ -168,4 +197,23 @@ if __name__ == "__main__":
 	# bst.print()
 	# bst.delete(79)
 	# bst.print()
+	bst2 = BinarySearchTree()
+	bst2.insert(5)
+	bst2.insert(4)
+	bst2.insert(8)
+	bst2.insert(11)
+	bst2.insert(13)
+	bst2.insert(4)
+	bst2.insert(7)
+	bst2.insert(2)
+	bst2.insert(1)
+	bst2.print()
+	bst2.print_preorder()
+
+
+
+
+
+
+
 
