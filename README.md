@@ -11,4 +11,6 @@ Miscellaneous: Miscellaneous practice code snippets and small projects.
 
 To Clone
 
+```
 git clone https://github.com/Priya-dharshini-r/practice.git
+```
